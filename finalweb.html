@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TimeTrack - Ultimate Startup Page</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+html{scroll-behavior:smooth;}
+
+body{background:#0f172a;color:white;}
+
+/* NAV */
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 50px;position:sticky;top:0;background:#0f172a;z-index:1000;}
+nav a{color:white;margin-left:20px;text-decoration:none;position:relative;}
+nav a::after{content:"";position:absolute;width:0;height:2px;background:#7c3aed;left:0;bottom:-5px;transition:.3s;}
+nav a:hover::after{width:100%;}
+nav a:hover{color:#7c3aed;}
+
+/* HERO */
+.hero{padding:100px 20px;text-align:center;background:linear-gradient(135deg,#2563eb,#7c3aed);}
+.hero h1{font-size:48px;}
+.hero span{background:linear-gradient(135deg,#fff,#ddd);-webkit-background-clip:text;color:transparent;}
+
+/* BUTTON */
+.btn{padding:12px 25px;border-radius:25px;background:white;color:#2563eb;border:none;cursor:pointer;position:relative;overflow:hidden;transition:.3s;}
+.btn:hover{transform:scale(1.05);}
+.btn::before{content:"";position:absolute;left:-100%;top:0;width:100%;height:100%;background:rgba(255,255,255,0.3);transition:.4s;}
+.btn:hover::before{left:100%;}
+
+/* SECTION */
+.section{padding:70px 20px;text-align:center;}
+
+/* FEATURES */
+.features{display:flex;flex-wrap:wrap;justify-content:center;}
+.card{background:#1e293b;margin:15px;padding:25px;width:230px;border-radius:15px;position:relative;overflow:hidden;transition:.3s;}
+.card::before{content:"";position:absolute;width:100%;height:0;background:linear-gradient(135deg,#2563eb,#7c3aed);left:0;bottom:0;transition:.4s;z-index:0;}
+.card:hover::before{height:100%;}
+.card h3,.card p{position:relative;z-index:1;}
+.card:hover{transform:translateY(-10px);box-shadow:0 10px 25px rgba(124,58,237,0.4);}
+
+/* APP PREVIEW */
+.preview img{width:250px;border-radius:20px;transition:.3s;}
+.preview img:hover{transform:scale(1.05) rotate(2deg);}
+
+/* TESTIMONIAL */
+.testimonial{background:#1e293b;padding:30px;margin:20px auto;border-radius:15px;width:60%;}
+
+/* LOGIN */
+.login-box{width:300px;margin:auto;background:#1e293b;padding:25px;border-radius:15px;}
+input{width:100%;padding:10px;margin:10px 0;border-radius:5px;border:none;}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;opacity:.7;}
+
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(30px);transition:1s;}
+.fade.show{opacity:1;transform:translateY(0);}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>TimeTrack</h2>
+<nav>
+<a href="#">Home</a>
+<a href="#features">Features</a>
+<a href="#preview">App</a>
+<a href="#login">Login</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero fade">
+<h1><span>Track Time.</span> Boost Productivity.</h1>
+<br>
+<button class="btn">Get Started</button>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section fade">
+<h2>Features</h2>
+<div class="features">
+<div class="card"><h3>⏱ Focus Mode</h3><p>Stay focused using Pomodoro.</p></div>
+<div class="card"><h3>🚫 Block Apps</h3><p>Remove distractions instantly.</p></div>
+<div class="card"><h3>🤖 AI Insights</h3><p>Smart suggestions.</p></div>
+<div class="card"><h3>📊 Reports</h3><p>Track your progress.</p></div>
+</div>
+</section>
+
+<!-- APP PREVIEW -->
+<section id="preview" class="section preview fade">
+<h2>App Preview</h2>
+<br>
+
+<img src="TimeTrack.png">
+
+<br><br>
+
+<!-- ✅ YOUR NEW BUTTON HERE -->
+<button class="btn" onclick="openUI()">Open App UI</button>
+
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section fade">
+<h2>What Users Say</h2>
+<div class="testimonial">"This app improved my focus by 2x!"</div>
+<div class="testimonial">"Best productivity tool for students."</div>
+</section>
+
+<!-- LOGIN -->
+<section id="login" class="section fade">
+<h2>Login</h2>
+<div class="login-box">
+<input placeholder="Email">
+<input type="password" placeholder="Password">
+<button class="btn" onclick="login()">Login</button>
+<p id="msg"></p>
+</div>
+</section>
+
+<footer>
+© Copyright 2026 TimeTrack
+</footer>
+
+<script>
+function login(){
+    document.getElementById("msg").innerText="Login successful (demo)";
+}
+
+function openUI(){
+    window.location.href = "ui.html";
+}
+
+// scroll animation
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+    faders.forEach(el=>{
+        const top=el.getBoundingClientRect().top;
+        if(top<window.innerHeight-100){
+            el.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
