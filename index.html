@@ -12,19 +12,108 @@
 html{scroll-behavior:smooth;}
 
 body{background:#0f172a;color:white;}
+.logo{
+width:160px;
+display:block;
+margin:auto;
+filter:drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+}
+.btn2{
+padding:12px 25px;
+border-radius:25px;
+background:transparent;
+color:white;
+border:2px solid white;
+cursor:pointer;
+transition:.3s;
+}
 
+.btn2:hover{
+background:white;
+color:#2563eb;
+}
 /* NAV */
 header{display:flex;justify-content:space-between;align-items:center;padding:15px 50px;position:sticky;top:0;background:#0f172a;z-index:1000;}
-nav a{color:white;margin-left:20px;text-decoration:none;position:relative;}
+nav{
+display:flex;
+align-items:center;
+gap:30px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+position:relative;
+font-size:15px;
+}
 nav a::after{content:"";position:absolute;width:0;height:2px;background:#7c3aed;left:0;bottom:-5px;transition:.3s;}
 nav a:hover::after{width:100%;}
 nav a:hover{color:#7c3aed;}
 
 /* HERO */
-.hero{padding:100px 20px;text-align:center;background:linear-gradient(135deg,#2563eb,#7c3aed);}
-.hero h1{font-size:48px;}
-.hero span{background:linear-gradient(135deg,#fff,#ddd);-webkit-background-clip:text;color:transparent;}
+.hero{
+padding:120px 20px;
+text-align:center;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+}
 
+.hero h1{
+font-size:52px;
+font-weight:700;
+margin-top:20px;
+line-height:1.2;
+}
+
+.hero span{
+background:linear-gradient(135deg,#fff,#ddd);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero-text{
+margin-top:20px;
+opacity:.85;
+font-size:18px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.hero-buttons{
+margin-top:35px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+@media(max-width:900px){
+
+header{
+padding:15px 25px;
+}
+
+nav{
+gap:18px;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+}
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:10px;
+}
+
+nav{
+gap:15px;
+}
+
+}
 /* BUTTON */
 .btn{padding:12px 25px;border-radius:25px;background:white;color:#2563eb;border:none;cursor:pointer;position:relative;overflow:hidden;transition:.3s;}
 .btn:hover{transform:scale(1.05);}
@@ -63,12 +152,12 @@ footer{text-align:center;padding:20px;opacity:.7;}
 </style>
 </head>
 
-<body>
+<body id ="top">
 
 <header>
 <h2>TimeTrack</h2>
 <nav>
-<a href="#">Home</a>
+<a href="#top">Home</a>
 <a href="#features">Features</a>
 <a href="#preview">App</a>
 <a href="#login">Login</a>
@@ -77,9 +166,26 @@ footer{text-align:center;padding:20px;opacity:.7;}
 
 <!-- HERO -->
 <section class="hero fade">
-<h1><span>Track Time.</span> Boost Productivity.</h1>
-<br>
-<button class="btn">Get Started</button>
+
+<img src="TimeTrack.png" class="logo">
+
+<h1>Track Time.<br><span>Boost Productivity.</span></h1>
+
+<p class="hero-text">
+The smartest productivity tracker for students and creators.
+Focus better, remove distractions and understand your time.
+</p>
+
+<div class="hero-buttons">
+<button class="btn" onclick="document.getElementById('features').scrollIntoView()">
+Get Started
+</button>
+
+<button class="btn2" onclick="openUI()">
+Open App
+</button>
+</div>
+
 </section>
 
 <!-- FEATURES -->
@@ -118,7 +224,7 @@ footer{text-align:center;padding:20px;opacity:.7;}
 <section id="login" class="section fade">
 <h2>Login</h2>
 <div class="login-box">
-<input placeholder="Email">
+<input type="email" placeholder="Email">
 <input type="password" placeholder="Password">
 <button class="btn" onclick="login()">Login</button>
 <p id="msg"></p>
