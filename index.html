@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeTrack - Ultimate Startup Page</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        .logo {
+            width: 160px;
+            display: block;
+            margin: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+        }
+
+        .btn2 {
+            padding: 12px 25px;
+            border-radius: 25px;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn2:hover {
+            background: white;
+            color: #2563eb;
+        }
+
+        /* NAV */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            background: #0f172a;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            font-size: 15px;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #7c3aed;
+            left: 0;
+            bottom: -5px;
+            transition: .3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #7c3aed;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 120px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            margin-top: 20px;
+            line-height: 1.2;
+        }
+
+        .hero span {
+            background: linear-gradient(135deg, #fff, #ddd);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text {
+            margin-top: 20px;
+            opacity: .85;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media(max-width:900px) {
+
+            header {
+                padding: 15px 25px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+        }
+
+        /* BUTTON */
+        .btn {
+            padding: 12px 25px;
+            border-radius: 25px;
+            background: white;
+            color: #2563eb;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: .4s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        /* FEATURES */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: #1e293b;
+            margin: 15px;
+            padding: 25px;
+            width: 230px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            left: 0;
+            bottom: 0;
+            transition: .4s;
+            z-index: 0;
+        }
+
+        .card:hover::before {
+            height: 100%;
+        }
+
+        .card h3,
+        .card p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        /* APP PREVIEW */
+        .preview img {
+            width: 250px;
+            border-radius: 20px;
+            transition: .3s;
+        }
+
+        .preview img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* TESTIMONIAL */
+        .testimonial {
+            background: #1e293b;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 60%;
+        }
+
+        /* LOGIN */
+        .login-box {
+            width: 300px;
+            margin: auto;
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: .7;
+        }
+
+        /* ANIMATION */
+        .fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s;
+        }
+
+        .fade.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <header>
+        <h2>TimeTrack</h2>
+        <nav>
+            <a href="#top">Home</a>
+            <a href="#features">Features</a>
+            <a href="#preview">App</a>
+            <a href="#login">Login</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero fade">
+
+        <img src="TimeTrack.png" class="logo">
+
+        <h1>Track Time.<br><span>Boost Productivity.</span></h1>
+
+        <p class="hero-text">The smartest productivity tracker for students and creators.</p>
+        <p>
+            Focus better, remove distractions and understand your time.</p>
+
+        <div class="hero-buttons">
+            <button class="btn" onclick="document.getElementById('login').scrollIntoView()">
+                Get Started
+            </button>
+            <button class="btn" onclick="showSection('about')">Learn More</button>
+        </div>
+
+    </section>
+    <!-- FEATURES -->
+    <section id="features" class="section fade">
+        <h2>Features</h2>
+        <div class="features">
+            <div class="card">
+                <h3>⏱ Focus Mode</h3>
+                <p>Stay focused using Pomodoro.</p>
+            </div>
+            <div class="card">
+                <h3>🚫 Block Apps</h3>
+                <p>Remove distractions instantly.</p>
+            </div>
+            <div class="card">
+                <h3>🤖 AI Insights</h3>
+                <p>Smart suggestions.</p>
+            </div>
+            <div class="card">
+                <h3>📊 Reports</h3>
+                <p>Track your progress.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APP PREVIEW -->
+    <section id="preview" class="section preview fade">
+        <h2>App Preview</h2>
+        <br>
+
+        <img src="TimeTrack.png">
+
+        <br><br>
+
+        <!-- ✅ YOUR NEW BUTTON HERE -->
+        <button class="btn" onclick="openUI()">Open App UI</button>
+
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="section fade">
+        <h2>What Users Say</h2>
+        <div class="testimonial">"This app improved my focus by 2x!"</div>
+        <div class="testimonial">"Best productivity tool for students."</div>
+    </section>
+
+    <section class="section fade">
+        <h2>Project Presentation</h2><br><br>
+
+        <a href="TimeTrack.pdf" target="_blank">
+            <button class="btn">View Full Presentation</button>
+        </a>
+
+    </section>
+    <!-- LOGIN -->
+    <section id="login" class="section fade">
+        <h2>Login</h2>
+        <div class="login-box">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button class="btn" onclick="login()">Login</button>
+            <p id="msg"></p>
+        </div>
+    </section>
+    <section id="about" class="section fade" style="display:none; padding:50px; font-family:Arial, sans-serif; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color:#f5f5f5; border-radius:15px;">
+
+        <h2 style="color:#00e5ff; margin-bottom:15px;">📌 About TimeTrack</h2>
+        <p style="line-height:1.8; margin-bottom:30px;">TimeTrack is a simple and powerful time management application
+            designed to help students and individuals track, organize,
+            and improve their daily productivity. Our goal is to make time
+            tracking effortless so that users can focus on what truly matters.</p>
+
+        <h2 style="color:#69f0ae; margin-bottom:15px;">🚀 Our Mission</h2>
+        <p style="line-height:1.8; margin-bottom:30px;">To help people manage their time efficiently, reduce
+            distractions,
+            and achieve their goals with better planning and productivity.</p>
+
+        <h3 style="color:#ea80fc; margin-bottom:10px;">💡 What TimeTrack Does</h3>
+        <h4 style="margin-bottom:15px;">TimeTrack allows users to:</h4>
+
+        <ul style="background: rgba(255,255,255,0.08); padding:25px 40px; margin-bottom:30px; 
+border-radius:12px; backdrop-filter: blur(10px); line-height:2;
+text-align:left; list-style-position: outside; max-width:600px; margin-left:auto; margin-right:auto;">
+            <li style="margin-bottom:8px;">Track daily activities and tasks</li>
+            <li style="margin-bottom:8px;">Monitor time spent on each task</li>
+            <li style="margin-bottom:8px;">Set goals and deadlines</li>
+            <li style="margin-bottom:8px;">Analyze Productivity Patterns</li>
+            <li style="margin-bottom:8px;">Improve time utilization</li>
+        </ul>
+
+        <h2 style="color:#ffd740; margin-bottom:15px;">⭐ Key Features</h2>
+
+        <p
+            style="background: rgba(255,255,255,0.08); padding:20px; margin-bottom:15px; border-radius:10px; backdrop-filter: blur(10px);">
+            ⏱️ Time Tracking <br>
+            Easily track how much time you spend on different activities.
+        </p>
+
+        <p
+            style="background: rgba(255,255,255,0.08); padding:20px; margin-bottom:15px; border-radius:10px; backdrop-filter: blur(10px);">
+            📊 Productivity Insights <br>
+            Get detailed reports and analytics about your daily performance.
+        </p>
+
+        <p
+            style="background: rgba(255,255,255,0.08); padding:20px; margin-bottom:15px; border-radius:10px; backdrop-filter: blur(10px);">
+            🎯 Goal Setting <br>
+            Set daily, weekly, or monthly goals and stay focused.
+        </p>
+
+        <p
+            style="background: rgba(255,255,255,0.08); padding:20px; margin-bottom:15px; border-radius:10px; backdrop-filter: blur(10px);">
+            🔔 Reminders <br>
+            Never miss important tasks with smart notifications.
+        </p>
+
+        <p
+            style="background: rgba(255,255,255,0.08); padding:20px; margin-bottom:30px; border-radius:10px; backdrop-filter: blur(10px);">
+            📱 Simple Interface <br>
+            Clean and user-friendly design for easy use.
+        </p>
+
+        <h2 style="color:#b388ff; margin-bottom:15px;">👩‍🎓 Who Can Use TimeTrack?</h2>
+        <ul style="background: rgba(255,255,255,0.08); padding:25px 40px; margin-bottom:30px; border-radius:12px; line-height:2;
+text-align:left; list-style-position: outside; max-width:600px; margin-left:auto; margin-right:auto;">
+            <li style="margin-bottom:8px;">Students</li>
+            <li style="margin-bottom:8px;">Professionals</li>
+            <li style="margin-bottom:8px;">Freelancers</li>
+            <li style="margin-bottom:8px;">Anyone who wants to improve productivity</li>
+        </ul>
+
+        <h2 style="color:#00e676; margin-bottom:15px;">💰 Pricing</h2>
+        <ul style="background: rgba(255,255,255,0.08); padding:25px 40px; margin-bottom:30px; border-radius:12px; line-height:2;
+text-align:left; list-style-position: outside; max-width:600px; margin-left:auto; margin-right:auto;">
+            <li style="margin-bottom:8px;">Monthly Plan: ₹49/month</li>
+            <li style="margin-bottom:8px;">Yearly Plan: ₹499/year</li>
+        </ul>
+
+        <h2 style="color:#ff5252; margin-bottom:15px;">🔐 Why Choose TimeTrack?</h2>
+        <ul style="background: rgba(255,255,255,0.08); padding:25px 40px; margin-bottom:30px; border-radius:12px; line-height:2;
+text-align:left; list-style-position: outside; max-width:600px; margin-left:auto; margin-right:auto;">
+            <li style="margin-bottom:8px;">Easy to use</li>
+            <li style="margin-bottom:8px;">Affordable prcing</li>
+            <li style="margin-bottom:8px;">Helps buils discipline</li>
+            <li style="margin-bottom:8px;">Improves Productivity</li>
+            <li style="margin-bottom:8px;">Saves Time</li>
+        </ul>
+
+        <h2 style="color:#40c4ff; margin-bottom:15px;">📈 Our Vision</h2>
+        <p style="line-height:1.8; margin-bottom:30px;">We aim to become a leading productivity tool that helps millions
+            of
+            users manage their time effectively and achieve success in their
+            personal and professional lives.</p>
+
+        <h2 style="color:#ff80ab; margin-bottom:10px;">📩 Contact Us</h2>
+        <p style="margin-bottom:10px;">For Supprt or queries, contact us at:</p>
+        <p style="font-weight:bold; color:#ffffff;">TimeTrack@gmail.com</p>
+
+    </section>
+    <footer>
+        © Copyright 2026 TimeTrack
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            let selected = document.getElementById(sectionId);
+
+            // show section
+            selected.style.display = "block";
+
+            // scroll
+            selected.scrollIntoView({ behavior: "smooth" });
+        }
+
+        function login() {
+            document.getElementById("msg").innerText = "Login successful (demo)";
+        }
+
+        function openUI() {
+            window.location.href = "ui.html";
+        }
+        function showDetails() {
+            document.getElementById("about").style.display = "block";
+        }
+        // scroll animation
+        const faders = document.querySelectorAll('.fade');
+        window.addEventListener('scroll', () => {
+            faders.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) {
+                    el.classList.add('show');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
